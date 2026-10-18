@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bayoderejoice3-rgb.github.io/rejoice-gospel-band/sitemap.xml
