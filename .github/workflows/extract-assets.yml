@@ -1,0 +1,35 @@
+name: Extract website assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'rejoice-gospel-band-assets.zip'
+      - '.github/workflows/extract-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract assets
+        run: |
+          rm -rf assets
+          mkdir -p assets
+          unzip -o rejoice-gospel-band-assets.zip -d .
+          rm -f rejoice-gospel-band-assets.zip
+
+      - name: Commit extracted assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git add -u
+          git diff --cached --quiet && exit 0
+          git commit -m "Add Rejoice Gospel Band website assets"
+          git push
