@@ -30,3 +30,87 @@ body{perspective:1200px;background-image:radial-gradient(ellipse at 15% 12%,rgba
 .hero-glow{animation:goldDrift 9s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 @media(max-width:900px){.hero-image img{transform:none}.hero-image:before{transform:none}.hero-image:hover img{transform:translateY(-3px)}}
+
+
+/* CINEMATIC CONCERT STAGE — black & gold */
+.hero{
+  background:
+    radial-gradient(ellipse at 74% 42%,rgba(255,211,94,.13),transparent 28%),
+    radial-gradient(ellipse at 82% 72%,rgba(230,184,63,.08),transparent 32%),
+    linear-gradient(180deg,rgba(5,5,5,.2),rgba(5,5,5,.92));
+}
+.hero:before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(112deg,transparent 37%,rgba(255,220,128,.08) 43%,transparent 50%),
+    linear-gradient(72deg,transparent 52%,rgba(230,184,63,.075) 59%,transparent 66%),
+    linear-gradient(98deg,transparent 72%,rgba(255,235,177,.055) 77%,transparent 83%);
+  transform-origin:top center;animation:stageLights 12s ease-in-out infinite alternate;
+}
+.hero-glow{
+  width:720px;height:720px;right:-160px;top:0;
+  background:radial-gradient(ellipse,rgba(255,210,99,.2) 0%,rgba(230,184,63,.075) 24%,transparent 68%);
+  filter:blur(4px);animation:goldDrift 8s ease-in-out infinite,stagePulse 5s ease-in-out infinite;
+}
+.hero-glow:before,.hero-glow:after{
+  content:"";position:absolute;top:-170px;width:160px;height:850px;
+  background:linear-gradient(180deg,rgba(255,227,155,.15),rgba(230,184,63,.045) 58%,transparent);
+  filter:blur(17px);transform-origin:top center;pointer-events:none;
+}
+.hero-glow:before{left:30%;transform:rotate(24deg);animation:beamSweep 9s ease-in-out infinite alternate}
+.hero-glow:after{left:65%;transform:rotate(-22deg);opacity:.7;animation:beamSweep 11s ease-in-out infinite alternate-reverse}
+.hero-image{isolation:isolate}
+.hero-image:before{
+  inset:-16px 16px 16px -16px;border:1px solid rgba(255,216,106,.82);
+  box-shadow:0 0 0 1px rgba(230,184,63,.07),0 0 30px rgba(230,184,63,.13),inset 0 0 25px rgba(230,184,63,.04);
+}
+.hero-image:after{
+  content:"";position:absolute;left:8%;right:8%;bottom:-20px;height:34px;z-index:-1;
+  background:rgba(230,184,63,.4);filter:blur(25px);border-radius:50%;
+  animation:stagePulse 4s ease-in-out infinite;
+}
+.hero-image img{
+  box-shadow:0 30px 75px rgba(0,0,0,.6),0 0 32px rgba(230,184,63,.08);
+}
+.hero-copy{position:relative;z-index:1}
+.hero-copy .eyebrow{text-shadow:0 0 18px rgba(230,184,63,.24)}
+.hero h1{text-shadow:0 10px 35px rgba(0,0,0,.4)}
+.hero h1 span{text-shadow:0 0 25px rgba(230,184,63,.19)}
+.intro-strip{position:relative;overflow:hidden}
+.intro-strip:before,.intro-strip:after{
+  content:"";position:absolute;width:260px;height:1px;top:50%;
+  background:linear-gradient(90deg,transparent,rgba(230,184,63,.65),transparent);
+  box-shadow:0 0 18px rgba(230,184,63,.3);pointer-events:none;
+}
+.intro-strip:before{left:-65px;transform:rotate(-35deg)}
+.intro-strip:after{right:-65px;transform:rotate(35deg)}
+.section-heading h2{text-wrap:balance}
+.service-grid article,.music-feature,.music-links a,.booking-card{
+  box-shadow:inset 0 1px rgba(255,255,255,.035),0 18px 45px rgba(0,0,0,.2);
+}
+.service-grid article:hover,.music-links a:hover,.contact-grid>a:hover{
+  border-color:rgba(255,216,106,.75);
+  box-shadow:0 24px 48px rgba(0,0,0,.38),0 0 24px rgba(230,184,63,.07);
+}
+@keyframes stageLights{
+  0%{opacity:.45;transform:translateX(-1.5%) skewX(-1deg)}
+  100%{opacity:1;transform:translateX(1.5%) skewX(1deg)}
+}
+@keyframes beamSweep{
+  0%{opacity:.3;rotate:-5deg}
+  100%{opacity:.9;rotate:6deg}
+}
+@keyframes stagePulse{
+  0%,100%{opacity:.55}
+  50%{opacity:1}
+}
+@media(max-width:900px){
+  .hero{background:radial-gradient(ellipse at 70% 60%,rgba(230,184,63,.1),transparent 38%),linear-gradient(180deg,#080704,#050505)}
+  .hero:before{opacity:.45}
+  .hero-glow{right:-340px;top:100px}
+  .hero-glow:before,.hero-glow:after{opacity:.45}
+  .hero-image:after{bottom:-12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero:before,.hero-glow,.hero-glow:before,.hero-glow:after,.hero-image:after{animation:none!important}
+}
